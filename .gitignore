@@ -11,3 +11,4 @@ my.mk
 reports/
 repos/
 scripts/my_*.py
+.fuse_hidden*
