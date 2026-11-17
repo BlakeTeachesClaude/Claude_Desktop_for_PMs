@@ -2,37 +2,221 @@
   {
     "name": "demo-storefront",
     "issues": [
-      "Fix checkout keyboard navigation",
-      "Add order-history filtering",
-      "Improve empty-cart messaging"
+      {
+        "title": "Fix checkout keyboard navigation",
+        "state": "OPEN",
+        "assignees": [
+          "alex"
+        ],
+        "labels": [
+          "bug",
+          "accessibility"
+        ],
+        "milestone": "Q4 launch"
+      },
+      {
+        "title": "Add order-history filtering",
+        "state": "OPEN",
+        "assignees": [],
+        "labels": [
+          "enhancement"
+        ],
+        "milestone": "Q4 launch"
+      },
+      {
+        "title": "Improve empty-cart messaging",
+        "state": "CLOSED",
+        "assignees": [
+          "alex"
+        ],
+        "labels": [
+          "copy"
+        ],
+        "milestone": null
+      },
+      {
+        "title": "Support gift-wrap option at checkout",
+        "state": "OPEN",
+        "assignees": [
+          "riley",
+          "alex"
+        ],
+        "labels": [
+          "enhancement"
+        ],
+        "milestone": "Q1 planning"
+      }
     ],
-    "pr": "Add order history specification"
+    "pull_requests": [
+      {
+        "title": "Add order history specification",
+        "state": "OPEN",
+        "draft": false,
+        "author": "alex",
+        "review": "REVIEW_REQUIRED"
+      },
+      {
+        "title": "Update cart copy",
+        "state": "MERGED",
+        "draft": false,
+        "author": "riley",
+        "review": "APPROVED"
+      }
+    ]
   },
   {
     "name": "demo-orders-api",
     "issues": [
-      "Add idempotency to order creation",
-      "Document order status transitions",
-      "Investigate duplicate webhooks"
+      {
+        "title": "Add idempotency to order creation",
+        "state": "OPEN",
+        "assignees": [
+          "casey"
+        ],
+        "labels": [
+          "enhancement",
+          "reliability"
+        ],
+        "milestone": "Q4 launch"
+      },
+      {
+        "title": "Document order status transitions",
+        "state": "OPEN",
+        "assignees": [],
+        "labels": [
+          "docs"
+        ],
+        "milestone": null
+      },
+      {
+        "title": "Investigate duplicate webhooks",
+        "state": "CLOSED",
+        "assignees": [
+          "casey"
+        ],
+        "labels": [
+          "bug"
+        ],
+        "milestone": "Q4 launch"
+      },
+      {
+        "title": "Rate-limit partner API keys",
+        "state": "OPEN",
+        "assignees": [
+          "jordan"
+        ],
+        "labels": [
+          "security"
+        ],
+        "milestone": "Q1 planning"
+      }
     ],
-    "pr": "Document webhook retry behavior"
+    "pull_requests": [
+      {
+        "title": "Document webhook retry behavior",
+        "state": "OPEN",
+        "draft": true,
+        "author": "casey",
+        "review": null
+      },
+      {
+        "title": "Fix retry back-off bug",
+        "state": "OPEN",
+        "draft": false,
+        "author": "jordan",
+        "review": "CHANGES_REQUESTED"
+      }
+    ]
   },
   {
     "name": "demo-platform-infra",
     "issues": [
-      "Improve deployment visibility",
-      "Investigate slow CI builds",
-      "Add staging smoke tests"
+      {
+        "title": "Improve deployment visibility",
+        "state": "OPEN",
+        "assignees": [
+          "jordan"
+        ],
+        "labels": [
+          "enhancement"
+        ],
+        "milestone": "Q4 launch"
+      },
+      {
+        "title": "Investigate slow CI builds",
+        "state": "OPEN",
+        "assignees": [],
+        "labels": [
+          "investigation"
+        ],
+        "milestone": null
+      },
+      {
+        "title": "Add staging smoke tests",
+        "state": "CLOSED",
+        "assignees": [
+          "jordan"
+        ],
+        "labels": [
+          "testing"
+        ],
+        "milestone": "Q4 launch"
+      }
     ],
-    "pr": "Add CI metrics checklist"
+    "pull_requests": [
+      {
+        "title": "Add CI metrics checklist",
+        "state": "OPEN",
+        "draft": false,
+        "author": "jordan",
+        "review": "APPROVED"
+      }
+    ]
   },
   {
     "name": "demo-product-docs",
     "issues": [
-      "Define release readiness checklist",
-      "Update onboarding guide",
-      "Review sprint goals"
+      {
+        "title": "Define release readiness checklist",
+        "state": "OPEN",
+        "assignees": [
+          "sam"
+        ],
+        "labels": [
+          "docs",
+          "process"
+        ],
+        "milestone": "Q4 launch"
+      },
+      {
+        "title": "Update onboarding guide",
+        "state": "OPEN",
+        "assignees": [],
+        "labels": [
+          "docs"
+        ],
+        "milestone": null
+      },
+      {
+        "title": "Review sprint goals with stakeholders",
+        "state": "CLOSED",
+        "assignees": [
+          "sam"
+        ],
+        "labels": [
+          "process"
+        ],
+        "milestone": "Q4 launch"
+      }
     ],
-    "pr": "Update release checklist"
+    "pull_requests": [
+      {
+        "title": "Update release checklist",
+        "state": "OPEN",
+        "draft": true,
+        "author": "sam",
+        "review": null
+      }
+    ]
   }
 ]

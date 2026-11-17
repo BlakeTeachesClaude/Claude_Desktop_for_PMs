@@ -27,7 +27,8 @@ An instructor-led workshop. Learners build a personal PM workspace: sync GitHub 
 - `python scripts/make_demo_data.py` regenerates `sample/snapshot.json`; `python scripts/build_deck.py` regenerates `deck/index.html`
 
 ## Maintaining this repo
-- `deck/index.html` and `sample/snapshot.json` are generated. Edit `scripts/build_deck.py` or `scripts/make_demo_data.py`, regenerate, then run `make test`. Tests fail if they drift.
+- `deck/index.html`, `sample-prompts.md`, `prompts/`, the slide table in `instructor-guide.md`, `sample/snapshot.json` and `demo/seed.json` are generated. Edit `scripts/build_deck.py` or `scripts/make_demo_data.py`, regenerate, then run `make test`. Tests fail if they drift.
+- Every lesson document has YAML front matter (audience, difficulty, topic, time_expected, prerequisites, tools, objective, last_reviewed). Keep it accurate when you change a document, and bump `last_reviewed`.
 - Keep demo data fictional and `url` fields null. No real people, repo names, keys or tokens in any file. The instructor bio on the "Who I am" slide is the one place employer names appear.
 - `repos/`, `data/`, `config.local.json`, `reports/` and personal `my-*` files are git-ignored; never commit them.
 - `compat/verified.json` records manual sign-offs for Claude Desktop, Cowork scheduled tasks, Artifacts and Claude Code. Update it only after a person has walked the lab.

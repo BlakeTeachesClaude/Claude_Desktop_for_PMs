@@ -1,3 +1,16 @@
+---
+title: "Install together"
+type: "setup"
+audience: "Project managers with no coding experience"
+difficulty: "beginner"
+topic: "Install git, gh, make, Python and Claude Desktop on macOS or Windows"
+time_expected: "20-30 min"
+prerequisites: ["A GitHub account (github.com/signup)"]
+tools: ["Homebrew", "winget", "git", "GitHub CLI (gh)", "make", "Claude Desktop"]
+objective: "Every learner can run git --version, gh --version and make --version."
+last_reviewed: "2026-11-17"
+---
+
 # Install together
 
 The only prerequisite is the ability to install software. Start with an empty machine. Explain the terminal, package managers and what each package does.
@@ -21,7 +34,8 @@ If WinGet is missing, install Microsoft App Installer. Use an approved alternati
 Install Homebrew from https://brew.sh if absent; follow its shell setup instructions.
 
 ```sh
-brew install git gh python make
+xcode-select --install   # Apple's command line tools: includes make
+brew install git gh python
 brew install --cask claude
 ```
 

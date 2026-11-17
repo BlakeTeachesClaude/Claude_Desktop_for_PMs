@@ -1,3 +1,16 @@
+---
+title: "Claude Cowork and Artifact prompts"
+type: "prompts"
+audience: "Project managers with no coding experience"
+difficulty: "beginner"
+topic: "Schedule a weekday refresh and build a Claude Artifact from the snapshot"
+time_expected: "15-20 min"
+prerequisites: ["A working data/snapshot.json (make sample is fine)"]
+tools: ["Claude Desktop", "Cowork", "Claude Artifacts"]
+objective: "Create a scheduled refresh task and a private interactive Artifact fed by the snapshot."
+last_reviewed: "2026-11-17"
+---
+
 # Claude Cowork and Artifact prompts
 
 ## Schedule the refresh
@@ -16,6 +29,9 @@ If Cowork cannot create the native Artifact in the current interface, open Claud
 ## Extension prompt
 
 > Identify a project management decision not yet supported by the baseline Artifact. Build a view to support it using the same snapshot. Choose Excel, HTML, another Artifact or a different format. Verify a count against the input and demonstrate the refresh method.
+
+## More prompts
+Every prompt used in the deck, with copy buttons, is in [sample-prompts.md](sample-prompts.md); there is one file per prompt in `prompts/`.
 
 ## Make it yours
 To design your own sync, data pulls and view with Claude asking the questions, use the coach prompt in [guided-build.md](guided-build.md).

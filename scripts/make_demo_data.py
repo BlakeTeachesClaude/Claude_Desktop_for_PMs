@@ -1,4 +1,4 @@
-"""Regenerates sample/snapshot.json: fictional demo data shaped exactly like a real `make sync` snapshot.
+"""Regenerates sample/snapshot.json and demo/seed.json: fictional demo data shaped exactly like a real `make sync` snapshot.
 
 Deterministic (fixed anchor date), no network, no real people. Edit SPEC to change the demo, then run:
     python scripts/make_demo_data.py
@@ -68,6 +68,18 @@ SPEC = {
 }
 
 
+def seed():
+    """demo/seed.json: what an organization owner creates to provision the demo repos (same SPEC, so it can't drift)."""
+    out = []
+    for name, spec in SPEC.items():
+        out.append({"name": name,
+                    "issues": [{"title": t, "state": st, "assignees": who, "labels": labels, "milestone": ms}
+                               for t, st, who, labels, ms, *_ in spec["issues"]],
+                    "pull_requests": [{"title": t, "state": st, "draft": dr, "author": au, "review": rv}
+                                      for t, st, dr, au, rv, *_ in spec["prs"]]})
+    return out
+
+
 def build():
     repos, items = [], []
     for name, spec in SPEC.items():
@@ -96,6 +108,7 @@ def build():
 if __name__ == "__main__":
     out = ROOT / "sample" / "snapshot.json"
     out.write_text(json.dumps(build(), indent=2) + "\n", encoding="utf-8")
+    (ROOT / "demo" / "seed.json").write_text(json.dumps(seed(), indent=2) + "\n", encoding="utf-8")
     snap = build()
     n_i = sum(len(r["issues"]) for r in snap["repositories"]); n_p = sum(len(r["pull_requests"]) for r in snap["repositories"])
     print(f"Wrote {out.relative_to(ROOT)}: {len(snap['repositories'])} repos, {n_i} issues, {n_p} PRs, {len(snap['projects'][0]['data']['items'])} project items")

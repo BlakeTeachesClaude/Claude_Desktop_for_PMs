@@ -372,3 +372,233 @@ def test_slide_4_is_github_for_jira_pros():
     text = " ".join(" ".join(r) for r in s["rows"])
     for needle in ("Epic", "Sprint", "JQL", "Status field", "Pull request"):
         assert needle in text, needle
+
+
+def test_install_slides_sit_between_layers_and_connect():
+    import runpy
+    slides = runpy.run_path(str(ROOT / "scripts" / "build_deck.py"))["SLIDES"]
+    titles = [s.get("title") for s in slides]
+    order = ["One workspace, three layers", "Install git", "Install the GitHub CLI (gh)", "Install make", "Install Claude Desktop"]
+    start = titles.index(order[0])
+    assert titles[start:start + 5] == order and start == 4
+    rest = titles[start + 5:start + 11]
+    assert rest[0].startswith("Stuck installing") and rest[1] == "What is git? What is a clone?" and rest[2] == "Get the lab: clone the repo"
+    assert rest[3] == ".gitignore: your safety net" and rest[4].startswith("Secrets:") and rest[5].startswith("Start every project with .gitignore")
+    by = {s["title"]: " ".join(s["commands"]) for s in slides if s.get("commands")}
+    setup = (ROOT / "setup.md").read_text(encoding="utf-8")
+    assert "brew install gh" in by["Install the GitHub CLI (gh)"] and "winget install --id GitHub.cli" in setup
+    assert "winget install --id GnuWin32.Make" in by["Install make"] and "winget install --id GnuWin32.Make" in setup
+    assert "brew install --cask claude" in by["Install Claude Desktop"] and "winget install --id Anthropic.Claude" in setup
+
+
+# ---- sample prompts: copy-and-paste blocks ---------------------------------
+def _ns():
+    import runpy
+    return runpy.run_path(str(ROOT / "scripts" / "build_deck.py"))
+
+
+def test_sample_prompts_md_is_generated_and_current():
+    ns = _ns()
+    assert (ROOT / "sample-prompts.md").read_text(encoding="utf-8") == ns["prompts_markdown"]()
+
+
+def test_every_prompt_is_in_the_deck_with_a_copy_button():
+    import html
+    ns = _ns()
+    deck = (ROOT / "deck" / "index.html").read_text(encoding="utf-8")
+    assert deck.count('class="copy"') == sum(len(s.get("prompts", [])) for s in ns["SLIDES"]) >= 12
+    for pr in ns["PROMPTS"].values():
+        assert html.escape(pr["text"], quote=False) in deck
+
+
+def test_pasted_prompts_come_from_the_lab_documents():
+    ns = _ns()
+    guided = (ROOT / "guided-build.md").read_text(encoding="utf-8")
+    prompts = (ROOT / "prompts.md").read_text(encoding="utf-8")
+    first = ns["PROMPTS"]["coach"]["text"].splitlines()[0]
+    assert "> " + first in guided
+    assert ns["PROMPTS"]["schedule"]["text"].split(".")[0] in prompts
+    assert "read-only on github" in ns["PROMPTS"]["coach"]["text"].lower()
+
+
+def test_each_code_along_has_two_or_three_slides_with_a_prompt_slide():
+    slides = _ns()["SLIDES"]
+    groups = {}
+    for s in slides:
+        k = s.get("kicker", "")
+        if "Code along 0" in k:
+            groups.setdefault(k.split("Code along ")[1][:2], []).append(s)
+    assert sorted(groups) == ["01", "02", "03", "04", "05"]
+    for n, g in groups.items():
+        assert 2 <= len(g) <= 4, n
+        assert any(s["type"] == "prompt" for s in g), n
+
+
+def test_prompts_never_ask_for_secrets_and_stay_read_only():
+    ns = _ns()
+    for key, pr in ns["PROMPTS"].items():
+        low = pr["text"].lower()
+        assert "paste your token" not in low and "ghp_" not in low, key
+    for key in ("install", "status"):
+        assert "never ask me for" in ns["PROMPTS"][key]["text"].lower(), key
+    assert "nothing that changes github" in ns["PROMPTS"]["team"]["text"].lower()
+
+
+# ---- YAML front matter on every lesson document and every prompt -------------
+import yaml  # noqa: E402
+
+FM_REQUIRED = ["title", "type", "audience", "difficulty", "topic", "time_expected", "prerequisites", "tools", "objective", "last_reviewed"]
+FM_SKIP_DIRS = {".git", ".github", ".pytest_cache", "reference", "documents", "reports", "workspace", "repos", "data", "node_modules", ".venv"}
+FM_SKIP_FILES = {"CLAUDE.md"}
+
+
+def _front_matter(path):
+    text = path.read_text(encoding="utf-8")
+    assert text.startswith("---\n"), f"{path.relative_to(ROOT)} has no front matter"
+    end = text.index("\n---\n", 4)
+    return yaml.safe_load(text[4:end]), text[end + 5:]
+
+
+def _lesson_docs():
+    return [p for p in ROOT.rglob("*.md") if not (FM_SKIP_DIRS & set(p.relative_to(ROOT).parts)) and p.name not in FM_SKIP_FILES]
+
+
+def test_every_lesson_document_has_valid_front_matter():
+    docs = _lesson_docs()
+    assert len(docs) >= 5
+    for p in docs:
+        meta, _ = _front_matter(p)
+        missing = [k for k in FM_REQUIRED if k not in meta or meta[k] in (None, "", [])]
+        assert not missing, f"{p.relative_to(ROOT)} missing {missing}"
+        assert meta["difficulty"] in {"beginner", "intermediate", "advanced"}, p.name
+        assert re.match(r"^\d+(-\d+)? (min|hours?)\b", meta["time_expected"]), (p.name, meta["time_expected"])
+        assert isinstance(meta["prerequisites"], list) and isinstance(meta["tools"], list), p.name
+        assert re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(meta["last_reviewed"])), p.name
+
+
+def test_front_matter_document_types_are_known():
+    known = {"overview", "setup", "lab", "prompts", "guide", "instructor-guide", "reference", "prompt", "prompt-collection"}
+    for p in _lesson_docs():
+        assert _front_matter(p)[0]["type"] in known, p.name
+
+
+def test_one_file_per_prompt_with_its_own_front_matter():
+    ns = _ns()
+    files = ns["prompt_files"]()
+    assert len(files) == len(ns["PROMPTS"]) >= 10
+    for rel, text in files.items():
+        assert (ROOT / rel).read_text(encoding="utf-8") == text, f"{rel} is stale: run scripts/build_deck.py"
+    on_disk = sorted(str(p.relative_to(ROOT)).replace("\\", "/") for p in (ROOT / "prompts").glob("*.md"))
+    assert on_disk == sorted(files)
+
+
+def test_prompt_front_matter_is_complete_and_placeholders_match_the_text():
+    for p in sorted((ROOT / "prompts").glob("*.md")):
+        meta, body = _front_matter(p)
+        assert meta["type"] == "prompt"
+        for k in ("stage", "use_with", "safety", "placeholders"):
+            assert k in meta, (p.name, k)
+        assert meta["safety"], p.name
+        assert meta["placeholders"] == re.findall(r"\[[^\]\n]+\]", body), p.name
+        assert body.count("```text") == 1
+
+
+def test_prompt_titles_are_unique_and_include_the_stage():
+    titles = [_front_matter(p)[0]["title"] for p in (ROOT / "prompts").glob("*.md")]
+    assert len(titles) == len(set(titles))
+    assert all(": " in t for t in titles)
+
+
+def test_deck_exposes_front_matter_as_meta_tags():
+    deck = _deck() if "_deck" in globals() else (ROOT / "deck" / "index.html").read_text(encoding="utf-8")
+    for name in ("audience", "difficulty", "topic", "time_expected"):
+        assert f'<meta name="{name}" content="' in deck, name
+
+
+# ---- documents stay in step with the deck and the demo data ------------------
+def test_instructor_guide_slide_table_is_generated_from_the_deck():
+    ns = _ns()
+    guide = (ROOT / "instructor-guide.md").read_text(encoding="utf-8")
+    table, total = ns["instructor_table"]()
+    a, b = guide.index(ns["GUIDE_START"]) + len(ns["GUIDE_START"]), guide.index(ns["GUIDE_END"])
+    assert guide[a:b].strip() == table
+    assert f"| {len(ns['SLIDES'])} |" in table
+    meta, _ = _front_matter(ROOT / "instructor-guide.md")
+    assert abs(int(re.match(r"\d+", meta["time_expected"]).group()) - total) <= 5, (meta["time_expected"], total)
+    readme_meta, _ = _front_matter(ROOT / "README.md")
+    assert abs(int(re.match(r"\d+", readme_meta["time_expected"]).group()) - total) <= 5
+
+
+def test_demo_readme_counts_and_seed_match_the_sample():
+    import runpy
+    ns = runpy.run_path(str(ROOT / "scripts" / "make_demo_data.py"))
+    s = load_sample()
+    issues = sum(len(r["issues"]) for r in s["repositories"])
+    prs = sum(len(r["pull_requests"]) for r in s["repositories"])
+    items = sum(len(p["data"]["items"]) for p in s["projects"])
+    demo = (ROOT / "demo" / "README.md").read_text(encoding="utf-8")
+    assert f"{issues} issues, {prs} PRs and {items} project items" in demo
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    assert f"{len(s['repositories'])} repos, {issues} issues, {prs} PRs, {items} project items" in readme
+    assert json.loads((ROOT / "demo" / "seed.json").read_text()) == ns["seed"]()
+    assert sum(len(x["issues"]) for x in ns["seed"]()) == issues and sum(len(x["pull_requests"]) for x in ns["seed"]()) == prs
+
+
+def test_docs_point_to_each_other_after_the_restructure():
+    guided = (ROOT / "guided-build.md").read_text(encoding="utf-8")
+    assert "sample-prompts.md" in guided and "[brackets]" in guided and "GitHub Enterprise" in guided
+    assert "sample-prompts.md" in (ROOT / "prompts.md").read_text(encoding="utf-8")
+    setup = (ROOT / "setup.md").read_text(encoding="utf-8")
+    assert "xcode-select --install" in setup and "brew install git gh python\n" in setup  # Homebrew's make is gmake; macOS make comes from the command line tools
+    guide = (ROOT / "instructor-guide.md").read_text(encoding="utf-8")
+    titles = [s.get("title") for s in _ns()["SLIDES"]]
+    for quoted in ("Your own project management tool", "The coach prompt"):
+        assert quoted in titles and f'"{quoted}"' in guide  # the guide names slides by title, so renumbering can't break it
+
+
+def test_instructor_bio_matches_the_slide():
+    guide = (ROOT / "instructor-guide.md").read_text(encoding="utf-8")
+    for needle in ("Disney Experience Technology", "Scale AI", "Meta"):
+        assert needle in guide, needle
+
+
+def test_lab_says_how_to_get_the_repo_before_using_it():
+    clone = "git clone https://github.com/BlakeTeachesClaude/Claude_Desktop_for_PMs.git"
+    slides = _ns()["SLIDES"]
+    titles = [s.get("title") for s in slides]
+    i = titles.index("Get the lab: clone the repo")
+    assert clone in " ".join(slides[i]["commands"]) and "make sample" in " ".join(slides[i]["commands"])
+    assert titles.index("Install Claude Desktop") < i < titles.index("Connect: what and why")
+    assert titles.index("Define the team") > i  # config.local.json is edited inside the clone
+    assert clone in (ROOT / "lab.md").read_text(encoding="utf-8") and "Download ZIP" in (ROOT / "setup.md").read_text(encoding="utf-8") + (ROOT / "lab.md").read_text(encoding="utf-8")
+
+
+def test_git_basics_gitignore_and_secrets_are_taught_before_use():
+    slides = _ns()["SLIDES"]
+    titles = [s.get("title") for s in slides]
+    gloss = slides[titles.index("What is git? What is a clone?")]
+    terms = dict(gloss["terms"])
+    for need in ("Git", "Repository (repo)", "Clone", "GitHub", "Commit", "Pull / Push"):
+        assert need in terms, need
+    assert titles.index("Install git") < titles.index("What is git? What is a clone?") < titles.index("Get the lab: clone the repo")
+    ignore = slides[titles.index(".gitignore: your safety net")]
+    text = " ".join(" ".join(ps) for _, ps in ignore["cards"]).lower()
+    assert "history" in text and ".env" in text and "git status" in text
+    secrets = slides[titles.index("Secrets: what they are and where they live")]
+    heads = [h for h, _ in secrets["cards"]]
+    assert heads == ["What counts as a secret", "How secrets leak", "Where they live instead", "If one leaks"]
+    assert "revoke" in " ".join(" ".join(ps) for _, ps in secrets["cards"]).lower()
+
+
+def test_first_prompts_create_gitignore_then_claude_md_and_the_coach_does_too():
+    ns = _ns()
+    order = ns["ORDER"]
+    assert order.index("gitignore") < order.index("claudemd") < order.index("scopes")
+    gi, cm = ns["PROMPTS"]["gitignore"]["text"], ns["PROMPTS"]["claudemd"]["text"]
+    for needle in (".env", "config.local.json", "data/", "git status", "wait for my OK", "Never open or print"):
+        assert needle in gi, needle
+    for needle in ("read-only", "never print, store or ask for secrets", "one question at a time", "Show it to me"):
+        assert needle in cm, needle
+    coach = ns["PROMPTS"]["coach"]["text"]
+    assert coach.index(".gitignore") < coach.index("clarifying questions") and "CLAUDE.md" in coach
+    assert "Protect first" in (ROOT / "guided-build.md").read_text(encoding="utf-8")
