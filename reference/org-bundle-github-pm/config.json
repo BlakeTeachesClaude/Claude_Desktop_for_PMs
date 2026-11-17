@@ -1,0 +1,4 @@
+{
+  "repositories": ["OWNER/REPO"],
+  "projects": [{"owner": "OWNER", "number": 1}]
+}

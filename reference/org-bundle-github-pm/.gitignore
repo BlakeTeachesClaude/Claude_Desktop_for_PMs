@@ -1,0 +1,6 @@
+data/
+repos/
+.venv/
+.env
+config.local.json
+__pycache__/

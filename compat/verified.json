@@ -1,0 +1,11 @@
+{
+  "_comment": "Manual compatibility sign-off. After walking the lab on a surface, set last_verified (YYYY-MM-DD), version, and verified_by. Smoke reports a warning when a date is missing or older than max_age_days. These surfaces have no public test API, so a human re-walks them.",
+  "max_age_days": 60,
+  "surfaces": {
+    "claude_desktop": {"what": "Install, sign-in, folder access per setup.md", "last_verified": null, "version": null, "verified_by": null},
+    "cowork_scheduled_tasks": {"what": "/schedule weekday refresh task per prompts.md; local runs need Desktop open", "last_verified": null, "version": null, "verified_by": null},
+    "claude_artifacts": {"what": "Artifact prompt in prompts.md builds from data/snapshot.json", "last_verified": null, "version": null, "verified_by": null},
+    "claude_code": {"what": "Opening the folder in Claude Code and running make sync/sample", "last_verified": null, "version": null, "verified_by": null},
+    "claude_api": {"what": "Not used by this lab; mark N/A or verify if added", "last_verified": null, "version": null, "verified_by": null}
+  }
+}

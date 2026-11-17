@@ -1,6 +1,13 @@
-repos/
-data/
-config.local.json
+.claude/settings.local.json
 .env
+.pytest_cache/
 .venv/
 __pycache__/
+config.local.json
+data/
+my-artifact-spec.md
+my-view/
+my.mk
+reports/
+repos/
+scripts/my_*.py

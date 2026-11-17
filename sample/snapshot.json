@@ -1,6 +1,7 @@
 {
   "sample_data": true,
   "synced_at": "2026-11-17T12:00:00Z",
+  "record_limit_per_list": 1000,
   "repositories": [
     {
       "repository": {
@@ -23,8 +24,17 @@
           "labels": [
             {
               "name": "bug"
+            },
+            {
+              "name": "accessibility"
             }
           ],
+          "milestone": {
+            "title": "Q4 launch"
+          },
+          "createdAt": "2026-10-27T12:00:00Z",
+          "updatedAt": "2026-11-15T12:00:00Z",
+          "closedAt": null,
           "url": null
         },
         {
@@ -37,6 +47,12 @@
               "name": "enhancement"
             }
           ],
+          "milestone": {
+            "title": "Q4 launch"
+          },
+          "createdAt": "2026-10-30T12:00:00Z",
+          "updatedAt": "2026-11-02T12:00:00Z",
+          "closedAt": null,
           "url": null
         },
         {
@@ -50,22 +66,72 @@
           ],
           "labels": [
             {
-              "name": "documentation"
+              "name": "copy"
             }
           ],
+          "milestone": null,
+          "createdAt": "2026-10-18T12:00:00Z",
+          "updatedAt": "2026-11-08T12:00:00Z",
+          "closedAt": "2026-11-08T12:00:00Z",
+          "url": null
+        },
+        {
+          "number": 4,
+          "title": "Support gift-wrap option at checkout",
+          "state": "OPEN",
+          "assignees": [
+            {
+              "login": "riley"
+            },
+            {
+              "login": "alex"
+            }
+          ],
+          "labels": [
+            {
+              "name": "enhancement"
+            }
+          ],
+          "milestone": {
+            "title": "Q1 planning"
+          },
+          "createdAt": "2026-11-11T12:00:00Z",
+          "updatedAt": "2026-11-16T12:00:00Z",
+          "closedAt": null,
           "url": null
         }
       ],
       "pull_requests": [
         {
-          "number": 4,
+          "number": 5,
           "title": "Add order history specification",
           "state": "OPEN",
           "isDraft": false,
+          "author": {
+            "login": "alex"
+          },
           "reviewDecision": "REVIEW_REQUIRED",
+          "createdAt": "2026-11-13T12:00:00Z",
+          "updatedAt": "2026-11-16T12:00:00Z",
+          "mergedAt": null,
+          "url": null
+        },
+        {
+          "number": 6,
+          "title": "Update cart copy",
+          "state": "MERGED",
+          "isDraft": false,
+          "author": {
+            "login": "riley"
+          },
+          "reviewDecision": "APPROVED",
+          "createdAt": "2026-11-05T12:00:00Z",
+          "updatedAt": "2026-11-08T12:00:00Z",
+          "mergedAt": "2026-11-08T12:00:00Z",
           "url": null
         }
-      ]
+      ],
+      "limit_reached": false
     },
     {
       "repository": {
@@ -87,9 +153,18 @@
           ],
           "labels": [
             {
-              "name": "bug"
+              "name": "enhancement"
+            },
+            {
+              "name": "reliability"
             }
           ],
+          "milestone": {
+            "title": "Q4 launch"
+          },
+          "createdAt": "2026-10-23T12:00:00Z",
+          "updatedAt": "2026-11-14T12:00:00Z",
+          "closedAt": null,
           "url": null
         },
         {
@@ -99,9 +174,13 @@
           "assignees": [],
           "labels": [
             {
-              "name": "enhancement"
+              "name": "docs"
             }
           ],
+          "milestone": null,
+          "createdAt": "2026-10-08T12:00:00Z",
+          "updatedAt": "2026-10-10T12:00:00Z",
+          "closedAt": null,
           "url": null
         },
         {
@@ -115,22 +194,71 @@
           ],
           "labels": [
             {
-              "name": "documentation"
+              "name": "bug"
             }
           ],
+          "milestone": {
+            "title": "Q4 launch"
+          },
+          "createdAt": "2026-10-15T12:00:00Z",
+          "updatedAt": "2026-11-10T12:00:00Z",
+          "closedAt": "2026-11-10T12:00:00Z",
+          "url": null
+        },
+        {
+          "number": 4,
+          "title": "Rate-limit partner API keys",
+          "state": "OPEN",
+          "assignees": [
+            {
+              "login": "jordan"
+            }
+          ],
+          "labels": [
+            {
+              "name": "security"
+            }
+          ],
+          "milestone": {
+            "title": "Q1 planning"
+          },
+          "createdAt": "2026-11-07T12:00:00Z",
+          "updatedAt": "2026-11-12T12:00:00Z",
+          "closedAt": null,
           "url": null
         }
       ],
       "pull_requests": [
         {
-          "number": 4,
+          "number": 5,
           "title": "Document webhook retry behavior",
           "state": "OPEN",
           "isDraft": true,
+          "author": {
+            "login": "casey"
+          },
           "reviewDecision": null,
+          "createdAt": "2026-11-12T12:00:00Z",
+          "updatedAt": "2026-11-15T12:00:00Z",
+          "mergedAt": null,
+          "url": null
+        },
+        {
+          "number": 6,
+          "title": "Fix retry back-off bug",
+          "state": "OPEN",
+          "isDraft": false,
+          "author": {
+            "login": "jordan"
+          },
+          "reviewDecision": "CHANGES_REQUESTED",
+          "createdAt": "2026-11-09T12:00:00Z",
+          "updatedAt": "2026-11-14T12:00:00Z",
+          "mergedAt": null,
           "url": null
         }
-      ]
+      ],
+      "limit_reached": false
     },
     {
       "repository": {
@@ -152,9 +280,15 @@
           ],
           "labels": [
             {
-              "name": "bug"
+              "name": "enhancement"
             }
           ],
+          "milestone": {
+            "title": "Q4 launch"
+          },
+          "createdAt": "2026-10-20T12:00:00Z",
+          "updatedAt": "2026-11-11T12:00:00Z",
+          "closedAt": null,
           "url": null
         },
         {
@@ -164,9 +298,13 @@
           "assignees": [],
           "labels": [
             {
-              "name": "enhancement"
+              "name": "investigation"
             }
           ],
+          "milestone": null,
+          "createdAt": "2026-11-03T12:00:00Z",
+          "updatedAt": "2026-11-03T12:00:00Z",
+          "closedAt": null,
           "url": null
         },
         {
@@ -180,9 +318,15 @@
           ],
           "labels": [
             {
-              "name": "documentation"
+              "name": "testing"
             }
           ],
+          "milestone": {
+            "title": "Q4 launch"
+          },
+          "createdAt": "2026-10-13T12:00:00Z",
+          "updatedAt": "2026-11-06T12:00:00Z",
+          "closedAt": "2026-11-06T12:00:00Z",
           "url": null
         }
       ],
@@ -192,10 +336,17 @@
           "title": "Add CI metrics checklist",
           "state": "OPEN",
           "isDraft": false,
-          "reviewDecision": "REVIEW_REQUIRED",
+          "author": {
+            "login": "jordan"
+          },
+          "reviewDecision": "APPROVED",
+          "createdAt": "2026-11-10T12:00:00Z",
+          "updatedAt": "2026-11-16T12:00:00Z",
+          "mergedAt": null,
           "url": null
         }
-      ]
+      ],
+      "limit_reached": false
     },
     {
       "repository": {
@@ -217,9 +368,18 @@
           ],
           "labels": [
             {
-              "name": "bug"
+              "name": "docs"
+            },
+            {
+              "name": "process"
             }
           ],
+          "milestone": {
+            "title": "Q4 launch"
+          },
+          "createdAt": "2026-11-01T12:00:00Z",
+          "updatedAt": "2026-11-13T12:00:00Z",
+          "closedAt": null,
           "url": null
         },
         {
@@ -229,14 +389,18 @@
           "assignees": [],
           "labels": [
             {
-              "name": "enhancement"
+              "name": "docs"
             }
           ],
+          "milestone": null,
+          "createdAt": "2026-09-28T12:00:00Z",
+          "updatedAt": "2026-10-04T12:00:00Z",
+          "closedAt": null,
           "url": null
         },
         {
           "number": 3,
-          "title": "Review sprint goals",
+          "title": "Review sprint goals with stakeholders",
           "state": "CLOSED",
           "assignees": [
             {
@@ -245,9 +409,15 @@
           ],
           "labels": [
             {
-              "name": "documentation"
+              "name": "process"
             }
           ],
+          "milestone": {
+            "title": "Q4 launch"
+          },
+          "createdAt": "2026-10-28T12:00:00Z",
+          "updatedAt": "2026-11-09T12:00:00Z",
+          "closedAt": "2026-11-09T12:00:00Z",
           "url": null
         }
       ],
@@ -257,10 +427,17 @@
           "title": "Update release checklist",
           "state": "OPEN",
           "isDraft": true,
+          "author": {
+            "login": "sam"
+          },
           "reviewDecision": null,
+          "createdAt": "2026-11-14T12:00:00Z",
+          "updatedAt": "2026-11-16T12:00:00Z",
+          "mergedAt": null,
           "url": null
         }
-      ]
+      ],
+      "limit_reached": false
     }
   ],
   "projects": [
@@ -271,7 +448,7 @@
         "items": [
           {
             "title": "Fix checkout keyboard navigation",
-            "status": "Todo",
+            "status": "In Progress",
             "content": {
               "type": "Issue",
               "number": 1,
@@ -280,7 +457,7 @@
           },
           {
             "title": "Add order-history filtering",
-            "status": "In Progress",
+            "status": "Todo",
             "content": {
               "type": "Issue",
               "number": 2,
@@ -297,17 +474,26 @@
             }
           },
           {
-            "title": "Add order history specification",
-            "status": "In Progress",
+            "title": "Support gift-wrap option at checkout",
+            "status": "Todo",
             "content": {
-              "type": "PullRequest",
+              "type": "Issue",
               "number": 4,
               "repository": "fictional/demo-storefront"
             }
           },
           {
+            "title": "Add order history specification",
+            "status": "In Review",
+            "content": {
+              "type": "PullRequest",
+              "number": 5,
+              "repository": "fictional/demo-storefront"
+            }
+          },
+          {
             "title": "Add idempotency to order creation",
-            "status": "Todo",
+            "status": "In Progress",
             "content": {
               "type": "Issue",
               "number": 1,
@@ -316,7 +502,7 @@
           },
           {
             "title": "Document order status transitions",
-            "status": "In Progress",
+            "status": "Todo",
             "content": {
               "type": "Issue",
               "number": 2,
@@ -333,17 +519,35 @@
             }
           },
           {
-            "title": "Document webhook retry behavior",
+            "title": "Rate-limit partner API keys",
             "status": "In Progress",
             "content": {
-              "type": "PullRequest",
+              "type": "Issue",
               "number": 4,
               "repository": "fictional/demo-orders-api"
             }
           },
           {
+            "title": "Document webhook retry behavior",
+            "status": "In Progress",
+            "content": {
+              "type": "PullRequest",
+              "number": 5,
+              "repository": "fictional/demo-orders-api"
+            }
+          },
+          {
+            "title": "Fix retry back-off bug",
+            "status": "In Review",
+            "content": {
+              "type": "PullRequest",
+              "number": 6,
+              "repository": "fictional/demo-orders-api"
+            }
+          },
+          {
             "title": "Improve deployment visibility",
-            "status": "Todo",
+            "status": "In Progress",
             "content": {
               "type": "Issue",
               "number": 1,
@@ -352,7 +556,7 @@
           },
           {
             "title": "Investigate slow CI builds",
-            "status": "In Progress",
+            "status": "Todo",
             "content": {
               "type": "Issue",
               "number": 2,
@@ -370,7 +574,7 @@
           },
           {
             "title": "Add CI metrics checklist",
-            "status": "In Progress",
+            "status": "In Review",
             "content": {
               "type": "PullRequest",
               "number": 4,
@@ -379,7 +583,7 @@
           },
           {
             "title": "Define release readiness checklist",
-            "status": "Todo",
+            "status": "In Progress",
             "content": {
               "type": "Issue",
               "number": 1,
@@ -388,7 +592,7 @@
           },
           {
             "title": "Update onboarding guide",
-            "status": "In Progress",
+            "status": "Todo",
             "content": {
               "type": "Issue",
               "number": 2,
@@ -396,7 +600,7 @@
             }
           },
           {
-            "title": "Review sprint goals",
+            "title": "Review sprint goals with stakeholders",
             "status": "Done",
             "content": {
               "type": "Issue",
@@ -413,8 +617,10 @@
               "repository": "fictional/demo-product-docs"
             }
           }
-        ]
-      }
+        ],
+        "totalCount": 19
+      },
+      "limit_reached": false
     }
   ]
 }

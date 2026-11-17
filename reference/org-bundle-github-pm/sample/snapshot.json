@@ -1,0 +1,115 @@
+{
+  "sample_data": true,
+  "synced_at": "2026-11-17T12:00:00Z",
+  "repositories": [
+    {
+      "repository": {
+        "nameWithOwner": "example/platform",
+        "url": "https://github.com/example/platform",
+        "defaultBranchRef": {
+          "name": "main"
+        }
+      },
+      "issues": [
+        {
+          "number": 11,
+          "title": "Improve deployment visibility",
+          "state": "OPEN",
+          "assignees": [
+            {
+              "login": "alex"
+            }
+          ],
+          "labels": [
+            {
+              "name": "enhancement"
+            }
+          ],
+          "milestone": null,
+          "createdAt": "2026-10-30T12:00:00Z",
+          "updatedAt": "2026-11-10T12:00:00Z",
+          "closedAt": null,
+          "url": "https://github.com/example/platform/issues/11"
+        },
+        {
+          "number": 12,
+          "title": "Investigate slow CI",
+          "state": "OPEN",
+          "assignees": [],
+          "labels": [
+            {
+              "name": "bug"
+            }
+          ],
+          "milestone": null,
+          "createdAt": "2026-10-30T12:00:00Z",
+          "updatedAt": "2026-11-10T12:00:00Z",
+          "closedAt": null,
+          "url": "https://github.com/example/platform/issues/12"
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 18,
+          "title": "Add CI metrics",
+          "state": "OPEN",
+          "isDraft": false,
+          "author": {
+            "login": "casey"
+          },
+          "reviewDecision": "REVIEW_REQUIRED",
+          "createdAt": "2026-11-12T12:00:00Z",
+          "updatedAt": "2026-11-14T12:00:00Z",
+          "mergedAt": null,
+          "url": "https://github.com/example/platform/pull/18"
+        }
+      ],
+      "limit_reached": false
+    },
+    {
+      "repository": {
+        "nameWithOwner": "example/web",
+        "url": "https://github.com/example/web",
+        "defaultBranchRef": {
+          "name": "main"
+        }
+      },
+      "issues": [],
+      "pull_requests": [],
+      "limit_reached": false
+    }
+  ],
+  "projects": [
+    {
+      "owner": "example",
+      "number": 1,
+      "data": {
+        "items": [
+          {
+            "id": "demo1",
+            "title": "Improve deployment visibility",
+            "status": "In Progress",
+            "content": {
+              "type": "Issue",
+              "number": 11,
+              "repository": "example/platform"
+            }
+          },
+          {
+            "id": "demo2",
+            "title": "Investigate slow CI",
+            "status": "Todo",
+            "content": {
+              "type": "Issue",
+              "number": 12,
+              "repository": "example/platform"
+            }
+          }
+        ],
+        "totalCount": 2
+      },
+      "limit_reached": false
+    }
+  ],
+  "record_limit_per_list": 1000
+}

@@ -16,3 +16,6 @@ If Cowork cannot create the native Artifact in the current interface, open Claud
 ## Extension prompt
 
 > Identify a project management decision not yet supported by the baseline Artifact. Build a view to support it using the same snapshot. Choose Excel, HTML, another Artifact or a different format. Verify a count against the input and demonstrate the refresh method.
+
+## Make it yours
+To design your own sync, data pulls and view with Claude asking the questions, use the coach prompt in [guided-build.md](guided-build.md).
