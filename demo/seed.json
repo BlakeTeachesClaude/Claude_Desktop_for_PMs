@@ -1,0 +1,38 @@
+[
+  {
+    "name": "demo-storefront",
+    "issues": [
+      "Fix checkout keyboard navigation",
+      "Add order-history filtering",
+      "Improve empty-cart messaging"
+    ],
+    "pr": "Add order history specification"
+  },
+  {
+    "name": "demo-orders-api",
+    "issues": [
+      "Add idempotency to order creation",
+      "Document order status transitions",
+      "Investigate duplicate webhooks"
+    ],
+    "pr": "Document webhook retry behavior"
+  },
+  {
+    "name": "demo-platform-infra",
+    "issues": [
+      "Improve deployment visibility",
+      "Investigate slow CI builds",
+      "Add staging smoke tests"
+    ],
+    "pr": "Add CI metrics checklist"
+  },
+  {
+    "name": "demo-product-docs",
+    "issues": [
+      "Define release readiness checklist",
+      "Update onboarding guide",
+      "Review sprint goals"
+    ],
+    "pr": "Update release checklist"
+  }
+]

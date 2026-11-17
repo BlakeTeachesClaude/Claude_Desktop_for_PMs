@@ -1,0 +1,420 @@
+{
+  "sample_data": true,
+  "synced_at": "2026-11-17T12:00:00Z",
+  "repositories": [
+    {
+      "repository": {
+        "nameWithOwner": "fictional/demo-storefront",
+        "url": null,
+        "defaultBranchRef": {
+          "name": "main"
+        }
+      },
+      "issues": [
+        {
+          "number": 1,
+          "title": "Fix checkout keyboard navigation",
+          "state": "OPEN",
+          "assignees": [
+            {
+              "login": "alex"
+            }
+          ],
+          "labels": [
+            {
+              "name": "bug"
+            }
+          ],
+          "url": null
+        },
+        {
+          "number": 2,
+          "title": "Add order-history filtering",
+          "state": "OPEN",
+          "assignees": [],
+          "labels": [
+            {
+              "name": "enhancement"
+            }
+          ],
+          "url": null
+        },
+        {
+          "number": 3,
+          "title": "Improve empty-cart messaging",
+          "state": "CLOSED",
+          "assignees": [
+            {
+              "login": "alex"
+            }
+          ],
+          "labels": [
+            {
+              "name": "documentation"
+            }
+          ],
+          "url": null
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 4,
+          "title": "Add order history specification",
+          "state": "OPEN",
+          "isDraft": false,
+          "reviewDecision": "REVIEW_REQUIRED",
+          "url": null
+        }
+      ]
+    },
+    {
+      "repository": {
+        "nameWithOwner": "fictional/demo-orders-api",
+        "url": null,
+        "defaultBranchRef": {
+          "name": "main"
+        }
+      },
+      "issues": [
+        {
+          "number": 1,
+          "title": "Add idempotency to order creation",
+          "state": "OPEN",
+          "assignees": [
+            {
+              "login": "casey"
+            }
+          ],
+          "labels": [
+            {
+              "name": "bug"
+            }
+          ],
+          "url": null
+        },
+        {
+          "number": 2,
+          "title": "Document order status transitions",
+          "state": "OPEN",
+          "assignees": [],
+          "labels": [
+            {
+              "name": "enhancement"
+            }
+          ],
+          "url": null
+        },
+        {
+          "number": 3,
+          "title": "Investigate duplicate webhooks",
+          "state": "CLOSED",
+          "assignees": [
+            {
+              "login": "casey"
+            }
+          ],
+          "labels": [
+            {
+              "name": "documentation"
+            }
+          ],
+          "url": null
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 4,
+          "title": "Document webhook retry behavior",
+          "state": "OPEN",
+          "isDraft": true,
+          "reviewDecision": null,
+          "url": null
+        }
+      ]
+    },
+    {
+      "repository": {
+        "nameWithOwner": "fictional/demo-platform-infra",
+        "url": null,
+        "defaultBranchRef": {
+          "name": "main"
+        }
+      },
+      "issues": [
+        {
+          "number": 1,
+          "title": "Improve deployment visibility",
+          "state": "OPEN",
+          "assignees": [
+            {
+              "login": "jordan"
+            }
+          ],
+          "labels": [
+            {
+              "name": "bug"
+            }
+          ],
+          "url": null
+        },
+        {
+          "number": 2,
+          "title": "Investigate slow CI builds",
+          "state": "OPEN",
+          "assignees": [],
+          "labels": [
+            {
+              "name": "enhancement"
+            }
+          ],
+          "url": null
+        },
+        {
+          "number": 3,
+          "title": "Add staging smoke tests",
+          "state": "CLOSED",
+          "assignees": [
+            {
+              "login": "jordan"
+            }
+          ],
+          "labels": [
+            {
+              "name": "documentation"
+            }
+          ],
+          "url": null
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 4,
+          "title": "Add CI metrics checklist",
+          "state": "OPEN",
+          "isDraft": false,
+          "reviewDecision": "REVIEW_REQUIRED",
+          "url": null
+        }
+      ]
+    },
+    {
+      "repository": {
+        "nameWithOwner": "fictional/demo-product-docs",
+        "url": null,
+        "defaultBranchRef": {
+          "name": "main"
+        }
+      },
+      "issues": [
+        {
+          "number": 1,
+          "title": "Define release readiness checklist",
+          "state": "OPEN",
+          "assignees": [
+            {
+              "login": "sam"
+            }
+          ],
+          "labels": [
+            {
+              "name": "bug"
+            }
+          ],
+          "url": null
+        },
+        {
+          "number": 2,
+          "title": "Update onboarding guide",
+          "state": "OPEN",
+          "assignees": [],
+          "labels": [
+            {
+              "name": "enhancement"
+            }
+          ],
+          "url": null
+        },
+        {
+          "number": 3,
+          "title": "Review sprint goals",
+          "state": "CLOSED",
+          "assignees": [
+            {
+              "login": "sam"
+            }
+          ],
+          "labels": [
+            {
+              "name": "documentation"
+            }
+          ],
+          "url": null
+        }
+      ],
+      "pull_requests": [
+        {
+          "number": 4,
+          "title": "Update release checklist",
+          "state": "OPEN",
+          "isDraft": true,
+          "reviewDecision": null,
+          "url": null
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "owner": "fictional",
+      "number": 1,
+      "data": {
+        "items": [
+          {
+            "title": "Fix checkout keyboard navigation",
+            "status": "Todo",
+            "content": {
+              "type": "Issue",
+              "number": 1,
+              "repository": "fictional/demo-storefront"
+            }
+          },
+          {
+            "title": "Add order-history filtering",
+            "status": "In Progress",
+            "content": {
+              "type": "Issue",
+              "number": 2,
+              "repository": "fictional/demo-storefront"
+            }
+          },
+          {
+            "title": "Improve empty-cart messaging",
+            "status": "Done",
+            "content": {
+              "type": "Issue",
+              "number": 3,
+              "repository": "fictional/demo-storefront"
+            }
+          },
+          {
+            "title": "Add order history specification",
+            "status": "In Progress",
+            "content": {
+              "type": "PullRequest",
+              "number": 4,
+              "repository": "fictional/demo-storefront"
+            }
+          },
+          {
+            "title": "Add idempotency to order creation",
+            "status": "Todo",
+            "content": {
+              "type": "Issue",
+              "number": 1,
+              "repository": "fictional/demo-orders-api"
+            }
+          },
+          {
+            "title": "Document order status transitions",
+            "status": "In Progress",
+            "content": {
+              "type": "Issue",
+              "number": 2,
+              "repository": "fictional/demo-orders-api"
+            }
+          },
+          {
+            "title": "Investigate duplicate webhooks",
+            "status": "Done",
+            "content": {
+              "type": "Issue",
+              "number": 3,
+              "repository": "fictional/demo-orders-api"
+            }
+          },
+          {
+            "title": "Document webhook retry behavior",
+            "status": "In Progress",
+            "content": {
+              "type": "PullRequest",
+              "number": 4,
+              "repository": "fictional/demo-orders-api"
+            }
+          },
+          {
+            "title": "Improve deployment visibility",
+            "status": "Todo",
+            "content": {
+              "type": "Issue",
+              "number": 1,
+              "repository": "fictional/demo-platform-infra"
+            }
+          },
+          {
+            "title": "Investigate slow CI builds",
+            "status": "In Progress",
+            "content": {
+              "type": "Issue",
+              "number": 2,
+              "repository": "fictional/demo-platform-infra"
+            }
+          },
+          {
+            "title": "Add staging smoke tests",
+            "status": "Done",
+            "content": {
+              "type": "Issue",
+              "number": 3,
+              "repository": "fictional/demo-platform-infra"
+            }
+          },
+          {
+            "title": "Add CI metrics checklist",
+            "status": "In Progress",
+            "content": {
+              "type": "PullRequest",
+              "number": 4,
+              "repository": "fictional/demo-platform-infra"
+            }
+          },
+          {
+            "title": "Define release readiness checklist",
+            "status": "Todo",
+            "content": {
+              "type": "Issue",
+              "number": 1,
+              "repository": "fictional/demo-product-docs"
+            }
+          },
+          {
+            "title": "Update onboarding guide",
+            "status": "In Progress",
+            "content": {
+              "type": "Issue",
+              "number": 2,
+              "repository": "fictional/demo-product-docs"
+            }
+          },
+          {
+            "title": "Review sprint goals",
+            "status": "Done",
+            "content": {
+              "type": "Issue",
+              "number": 3,
+              "repository": "fictional/demo-product-docs"
+            }
+          },
+          {
+            "title": "Update release checklist",
+            "status": "In Progress",
+            "content": {
+              "type": "PullRequest",
+              "number": 4,
+              "repository": "fictional/demo-product-docs"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
